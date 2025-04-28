@@ -1,0 +1,55 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst vga.video_dual_clock_buffer_0 -pg 1 -lvl 38 -y 290
+preplace inst vga.video_dma_controller_0 -pg 1 -lvl 33 -y 90
+preplace inst vga.video_clipper_0 -pg 1 -lvl 31 -y 180
+preplace inst vga.video_chroma_resampler_0 -pg 1 -lvl 2 -y 130
+preplace inst vga.canny_0 -pg 1 -lvl 20 -y 130
+preplace inst vga.video_pixel_buffer_dma_0 -pg 1 -lvl 33 -y 250
+preplace inst vga.nios2_gen2_0.reset_bridge -pg 1
+preplace inst vga.nios2_gen2_0 -pg 1 -lvl 34 -y 180
+preplace inst vga.nios2_gen2_0.clock_bridge -pg 1
+preplace inst vga.video_pll_0.video_pll -pg 1
+preplace inst vga.onchip_memory2_0 -pg 1 -lvl 39 -y 330
+preplace inst vga -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst vga.vga_controller -pg 1 -lvl 39 -y 410
+preplace inst vga.jtag_uart_0 -pg 1 -lvl 39 -y 130
+preplace inst vga.video_scaler_0 -pg 1 -lvl 32 -y 150
+preplace inst vga.video_rgb_resampler_0 -pg 1 -lvl 30 -y 160
+preplace inst vga.video_scaler_1 -pg 1 -lvl 37 -y 270
+preplace inst vga.video_rgb_resampler_1 -pg 1 -lvl 36 -y 250
+preplace inst vga.video_decoder -pg 1 -lvl 1 -y 110
+preplace inst vga.red_0 -pg 1 -lvl 19 -y 150
+preplace inst vga.video_csc_0 -pg 1 -lvl 29 -y 150
+preplace inst vga.sram -pg 1 -lvl 39 -y 230
+preplace inst vga.clk_0 -pg 1 -lvl 34 -y 350
+preplace inst vga.nios2_gen2_0.cpu -pg 1
+preplace inst vga.av_config -pg 1 -lvl 39 -y 30
+preplace inst vga.video_pll_0 -pg 1 -lvl 35 -y 280
+preplace inst vga.video_pll_0.reset_from_locked -pg 1
+preplace netloc FAN_OUT<net_container>vga</net_container>(SLAVE)jtag_uart_0.clk,(SLAVE)video_pll_0.ref_clk,(MASTER)clk_0.clk) 1 34 5 9270 100 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)video_scaler_1.avalon_scaler_source,(SLAVE)video_dual_clock_buffer_0.avalon_dc_buffer_sink) 1 37 1 N
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)video_pixel_buffer_dma_0.avalon_pixel_source,(SLAVE)video_rgb_resampler_1.avalon_rgb_sink) 1 33 3 NJ 120 NJ 160 9590
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)video_decoder.avalon_decoder_source,(SLAVE)video_chroma_resampler_0.avalon_chroma_sink) 1 1 1 N
+preplace netloc EXPORT<net_container>vga</net_container>(SLAVE)vga.clk,(SLAVE)clk_0.clk_in) 1 0 34 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ
+preplace netloc EXPORT<net_container>vga</net_container>(SLAVE)video_decoder.external_interface,(SLAVE)vga.video_decoder) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)video_scaler_0.avalon_scaler_source,(SLAVE)video_dma_controller_0.avalon_dma_sink) 1 32 1 8450
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(SLAVE)video_rgb_resampler_0.avalon_rgb_sink,(MASTER)video_csc_0.avalon_csc_source) 1 29 1 7590
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(SLAVE)red_0.avalon_streaming_sink,(MASTER)video_chroma_resampler_0.avalon_chroma_source) 1 2 17 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc INTERCONNECT<net_container>vga</net_container>(SLAVE)jtag_uart_0.reset,(MASTER)clk_0.clk_reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)video_dma_controller_0.reset,(SLAVE)vga_controller.reset,(SLAVE)canny_0.reset,(SLAVE)av_config.reset,(SLAVE)video_rgb_resampler_0.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(MASTER)video_pll_0.reset_source,(SLAVE)video_pll_0.ref_reset,(SLAVE)video_scaler_0.reset,(SLAVE)sram.reset,(SLAVE)video_rgb_resampler_1.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)video_decoder.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)video_scaler_1.reset,(SLAVE)video_clipper_0.reset,(SLAVE)red_0.reset,(SLAVE)video_pixel_buffer_dma_0.reset,(SLAVE)video_csc_0.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)video_chroma_resampler_0.reset) 1 0 39 150 220 480 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 5740 140 6210 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 NJ 220 7330 240 7570 150 7890 170 8130 260 8410 240 8790 320 9250 240 9550 240 9950 260 10250 280 10640
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)nios2_gen2_0.irq,(SLAVE)jtag_uart_0.irq) 1 34 5 9290 120 NJ 180 NJ 180 NJ 180 NJ
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(SLAVE)video_scaler_1.avalon_scaler_sink,(MASTER)video_rgb_resampler_1.avalon_rgb_source) 1 36 1 N
+preplace netloc INTERCONNECT<net_container>vga</net_container>(SLAVE)nios2_gen2_0.debug_mem_slave,(MASTER)video_dma_controller_0.avalon_dma_master,(MASTER)video_pixel_buffer_dma_0.avalon_pixel_dma_master,(SLAVE)video_pixel_buffer_dma_0.avalon_control_slave,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)video_rgb_resampler_1.avalon_rgb_slave,(MASTER)nios2_gen2_0.data_master,(SLAVE)video_dma_controller_0.avalon_dma_control_slave,(SLAVE)sram.avalon_sram_slave,(SLAVE)onchip_memory2_0.s1,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)av_config.avalon_av_config_slave,(SLAVE)video_rgb_resampler_0.avalon_rgb_slave) 1 29 10 7610 280 NJ 280 NJ 280 8430 220 8810 140 9210 200 9650 200 NJ 200 NJ 200 10620
+preplace netloc EXPORT<net_container>vga</net_container>(SLAVE)vga_controller.external_interface,(SLAVE)vga.vga_controller) 1 0 39 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>vga</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)vga.reset) 1 0 34 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(SLAVE)video_scaler_0.avalon_scaler_sink,(MASTER)video_clipper_0.avalon_clipper_source) 1 31 1 8170
+preplace netloc FAN_OUT<net_container>vga</net_container>(MASTER)video_pll_0.vga_clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_out,(SLAVE)vga_controller.clk) 1 35 4 NJ 360 NJ 360 10230 440 NJ
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)red_0.avalon_streaming_source,(SLAVE)canny_0.avalon_streaming_sink) 1 19 1 6250
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(SLAVE)video_clipper_0.avalon_clipper_sink,(MASTER)video_rgb_resampler_0.avalon_rgb_source) 1 30 1 N
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)canny_0.avalon_streaming_source,(SLAVE)video_csc_0.avalon_csc_sink) 1 20 9 N 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc POINT_TO_POINT<net_container>vga</net_container>(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source,(SLAVE)vga_controller.avalon_vga_sink) 1 38 1 10600
+preplace netloc EXPORT<net_container>vga</net_container>(SLAVE)vga.sram,(SLAVE)sram.external_interface) 1 0 39 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 80 NJ 80 NJ 80 NJ 140 NJ 140 NJ 140 NJ
+preplace netloc EXPORT<net_container>vga</net_container>(SLAVE)av_config.external_interface,(SLAVE)vga.av_config) 1 0 39 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 80 NJ 80 NJ 80 NJ
+preplace netloc FAN_OUT<net_container>vga</net_container>(SLAVE)video_dual_clock_buffer_0.clock_stream_in,(SLAVE)video_scaler_0.clk,(SLAVE)canny_0.clock,(SLAVE)red_0.clock,(SLAVE)av_config.clk,(SLAVE)video_pixel_buffer_dma_0.clk,(SLAVE)video_csc_0.clk,(SLAVE)video_dma_controller_0.clk,(MASTER)video_pll_0.video_in_clk,(SLAVE)video_rgb_resampler_0.clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)video_chroma_resampler_0.clk,(SLAVE)sram.clk,(SLAVE)video_clipper_0.clk,(SLAVE)video_decoder.clk,(SLAVE)video_rgb_resampler_1.clk,(SLAVE)video_scaler_1.clk,(SLAVE)onchip_memory2_0.clk1) 1 0 39 130 200 460 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 5720 240 6230 120 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 7330 140 7550 130 7910 150 8150 240 8390 200 8850 100 NJ 140 9570 220 9970 240 10270 260 10660
+levelinfo -pg 1 0 100 10890
+levelinfo -hier vga 110 180 510 750 1040 1280 1580 1840 2120 2590 2970 3220 3520 3780 4210 4470 4750 5280 5700 5990 6340 6600 7040 7210 7230 7250 7270 7290 7310 7380 7640 7940 8200 8480 8970 9370 9700 10040 10320 10710 10880
